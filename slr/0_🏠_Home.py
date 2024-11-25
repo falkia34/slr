@@ -34,7 +34,8 @@ options = {
     "show_sidebar": False,
 }
 
-page = st_navbar(["Beranda", "Rekognisi", "Riwayat"], styles=styles, options=options)
+page = st_navbar(["Beranda", "Rekognisi", "Riwayat"],
+                 styles=styles, options=options, logo_path="slr/slr.svg")
 
 if page == "Rekognisi":
     st.switch_page("pages/1_📊_Recognize.py")
@@ -94,6 +95,9 @@ html_code = """
 """
 st.markdown(html_code, unsafe_allow_html=True)
 
+if st.button("Mulai rekognisi", type="primary"):
+    st.switch_page("pages/1_📊_Recognize.py")
+    
 st.header("Why Choose Us?")
 st.write("""
 Sign Language Recognizer adalah solusi inovatif untuk menjembatani komunikasi antara pengguna bahasa

@@ -39,8 +39,8 @@ options = {
     "show_sidebar": False,
 }
 
-page = st_navbar(["Beranda", "Rekognisi", "Riwayat"],
-                 selected="Rekognisi", styles=styles, options=options)
+page = st_navbar(["Beranda", "Rekognisi", "Riwayat"], selected="Rekognisi",
+                 styles=styles, options=options, logo_path="slr/slr.svg")
 
 if page == "Beranda":
     st.switch_page("0_🏠_Home.py")

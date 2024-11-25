@@ -35,13 +35,15 @@ options = {
     "show_sidebar": False,
 }
 
-page = st_navbar(["Beranda", "Rekognisi", "Riwayat"],
-                 selected="Riwayat", styles=styles, options=options)
+page = st_navbar(["Beranda", "Rekognisi", "Riwayat"], selected="Riwayat",
+                 styles=styles, options=options, logo_path="slr/slr.svg")
 
 if page == "Beranda":
     st.switch_page("0_🏠_Home.py")
 if page == "Rekognisi":
     st.switch_page("pages/1_📊_Recognize.py")
+
+st.title(":1234: Riwayat")
 
 histories = pd.read_csv('slr/data/histories/histories.csv').to_dict('records')
 

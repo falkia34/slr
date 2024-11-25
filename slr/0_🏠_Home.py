@@ -1,6 +1,9 @@
 import streamlit as st
 from streamlit_navigation_bar import st_navbar
 
+if 'histories' not in st.session_state:
+    st.session_state['histories'] = []
+
 st.set_page_config(
     page_title="Home - Sign Language Recognizer",
     page_icon="👀",
@@ -31,11 +34,11 @@ options = {
     "show_sidebar": False,
 }
 
-page = st_navbar(["Home", "Recognize", "History"], styles=styles, options=options)
+page = st_navbar(["Beranda", "Rekognisi", "Riwayat"], styles=styles, options=options)
 
-if page == "Recognize":
+if page == "Rekognisi":
     st.switch_page("pages/1_📊_Recognize.py")
-if page == "History":
+if page == "Riwayat":
     st.switch_page("pages/2_🔢_History.py")
 
 

@@ -16,6 +16,7 @@ torchvision = {version = "^0.14.0", source = "pytorch_cpu"}
 torchaudio = {version = "^0.13.0", source = "pytorch_cpu"}
 streamlit-navigation-bar = "^3.3.0"
 opencv-python = "^4.5.5.64"
+uuid7 = "^0.1.0"
 
 [[tool.poetry.source]]
 name = "pytorch_cpu"

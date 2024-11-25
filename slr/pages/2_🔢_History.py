@@ -1,5 +1,9 @@
 import streamlit as st
 from streamlit_navigation_bar import st_navbar
+import pandas as pd
+
+if 'histories' not in st.session_state:
+    st.session_state['histories'] = []
 
 st.set_page_config(
     page_title="Recogize - Sign Language Recognizer",
@@ -31,10 +35,18 @@ options = {
     "show_sidebar": False,
 }
 
-page = st_navbar(["Home", "Recognize", "History"], selected="History", styles=styles, options=options)
+page = st_navbar(["Beranda", "Rekognisi", "Riwayat"],
+                 selected="Riwayat", styles=styles, options=options)
 
-if page == "Home":
+if page == "Beranda":
     st.switch_page("0_🏠_Home.py")
-if page == "Recognize":
+if page == "Rekognisi":
     st.switch_page("pages/1_📊_Recognize.py")
 
+histories = pd.read_csv('slr/data/histories/histories.csv').to_dict('records')
+
+for history in histories:
+    st.markdown(f"## ID: {history['id']}")
+    st.write(f"**Waktu:** {history['created_at']}")
+    st.video(history['video_path'])
+    st.write(f"**Hasil rekognisi:** {history['result']}")

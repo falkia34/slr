@@ -1,7 +1,6 @@
 from torch.cuda.amp import autocast as autocast
 from .seq_scripts import seq_inference
-from .utils import GpuDataParallel
-from .utils import video_augmentation
+from .utils import GpuDataParallel, video_augmentation, get_parser
 from collections import OrderedDict
 from .slr_network_multi import SLRModel
 import shutil
@@ -150,15 +149,8 @@ class Processor():
         return vid, video_length
 
 
-def import_class(name):
-    components = name.rsplit('.', 1)
-    mod = importlib.import_module(components[0])
-    mod = getattr(mod, components[1])
-    return mod
-
-
 if __name__ == '__main__':
-    sparser = utils.get_parser()
+    sparser = get_parser()
     p = sparser.parse_args()
     if p.config is not None:
         with open(p.config, 'r') as f:
